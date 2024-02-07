@@ -10,14 +10,22 @@ import { Issue } from '../issue';
 export class IssueListComponent implements OnInit {
   issues: Issue[] = [];
 
-  constructor(public issueService: IssuesService) {}
+  constructor(public issueService: IssuesService) { }
 
   ngOnInit(): void {
-      this.getIssues();
+    this.getIssues();
   }
 
   private getIssues() {
     this.issues = this.issueService.getPendingIssues();
+  }
+
+  // This prop will toggle the apprearance of the report issue form.
+  showReportIssue = false;
+
+  onCloseReport() {
+    this.showReportIssue = false;
+    this.getIssues();
   }
 
 }
