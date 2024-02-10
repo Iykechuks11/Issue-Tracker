@@ -7,13 +7,17 @@
         <clr-dg-column [clrDgField]="'description'">Description</clr-dg-column>
         <clr-dg-column [clrDgField]="'priority'">Priority</clr-dg-column>
         <clr-dg-row *clrDgItems="let issue of issues">
+            <!-- <app-confirm-dialog> component adds a drop-down menu -->
+            <clr-dg-action-overflow>
+                <button class="action-item" (click)="selectedIssue =
+                issue">Resolve</button>
+            </clr-dg-action-overflow>
             <clr-dg-cell>{{issue.issueNo}}</clr-dg-cell>
             <clr-dg-cell>{{issue.type}}</clr-dg-cell>
             <clr-dg-cell>{{issue.title}}</clr-dg-cell>
             <clr-dg-cell>{{issue.description}}</clr-dg-cell>
             <clr-dg-cell>
-                <span class="label" [class.label-danger]="issue.priority ===
-        'high'">{{issue.priority}}</span>
+                <span class="label" [class.label-danger]="issue.priority === 'high'">{{issue.priority}}</span>
             </clr-dg-cell>
         </clr-dg-row>
         <clr-dg-footer>{{issues.length}} issues</clr-dg-footer>
@@ -21,3 +25,6 @@
 </ng-container>
 
 <app-issue-report *ngIf="showReportIssue === true" (formClose)="onCloseReport()"></app-issue-report>
+
+<app-confirm-dialog *ngIf="selectedIssue" [issueNo]="selectedIssue.
+issueNo" (confirm)="onConfirm($event)"></app-confirm-dialog>
