@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 // Validators for form validation messages
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Issue } from '../issue';
@@ -16,7 +16,7 @@ interface IssueForm {
   templateUrl: './issue-report.component.html',
   styleUrl: './issue-report.component.css'
 })
-export class IssueReportComponent {
+export class IssueReportComponent implements OnInit {
 
   @Output() formClose = new EventEmitter();
 
@@ -36,6 +36,14 @@ export class IssueReportComponent {
     }
     this.issueService.createIssue(this.issueForm.getRawValue() as Issue);
     this.formClose.emit();
+  }
+
+  suggestions: Issue[] = [];
+
+  ngOnInit(): void {
+    this.issueForm.controls.title.valueChanges.subscribe(title => {
+      this.suggestions = this.issueService.getSuggestions(title);
+    });
   }
 
 }

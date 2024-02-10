@@ -10,3 +10,7 @@ when reporting an issue to help users avoid duplicate entries. The following dia
 architectural overview of the project:
 
 ![image](https://github.com/Iykechuks11/Issue-Tracker/assets/29488077/279ae05f-6518-4278-bfa5-74d0ca097be8)
+
+![image](https://github.com/Iykechuks11/Issue-Tracker/assets/29488077/d2969cd2-a8e6-4405-92f0-02ff430bebce)
+
+![image](https://github.com/Iykechuks11/Issue-Tracker/assets/29488077/82037849-1e4f-4a18-929f-a9e41b6bb25a)
